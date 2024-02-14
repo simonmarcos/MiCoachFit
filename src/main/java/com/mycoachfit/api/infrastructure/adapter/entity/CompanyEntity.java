@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -14,6 +16,7 @@ import java.util.Set;
 @Entity
 @Table(name = "company")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class CompanyEntity extends AbstractAuditingEntity implements Serializable {
 
     @Id

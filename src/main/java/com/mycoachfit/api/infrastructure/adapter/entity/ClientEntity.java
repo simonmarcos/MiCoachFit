@@ -2,8 +2,11 @@ package com.mycoachfit.api.infrastructure.adapter.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.validation.constraints.NotNull;
+
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,6 +15,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "client")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class ClientEntity extends AbstractAuditingEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")

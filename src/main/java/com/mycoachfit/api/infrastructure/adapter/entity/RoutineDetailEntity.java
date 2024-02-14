@@ -2,15 +2,19 @@ package com.mycoachfit.api.infrastructure.adapter.entity;
 
 import com.mycoachfit.api.domain.model.enumeration.ExerciseType;
 import com.mycoachfit.api.domain.model.enumeration.RoutineDetailStatus;
+
 import javax.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "routineDetail")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class RoutineDetailEntity extends AbstractAuditingEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")

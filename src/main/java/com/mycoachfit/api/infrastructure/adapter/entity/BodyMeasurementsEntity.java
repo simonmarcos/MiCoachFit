@@ -1,8 +1,10 @@
 package com.mycoachfit.api.infrastructure.adapter.entity;
 
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,6 +12,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "bodyMeasurements")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class BodyMeasurementsEntity extends AbstractAuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")

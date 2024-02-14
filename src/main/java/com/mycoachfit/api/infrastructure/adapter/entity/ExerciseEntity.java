@@ -1,7 +1,9 @@
 package com.mycoachfit.api.infrastructure.adapter.entity;
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,6 +11,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "exercise")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class ExerciseEntity extends AbstractAuditingEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
