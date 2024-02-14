@@ -3,10 +3,10 @@ package com.mycoachfit.api.infrastructure.adapter.entity;
 
 import javax.validation.constraints.NotNull;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity

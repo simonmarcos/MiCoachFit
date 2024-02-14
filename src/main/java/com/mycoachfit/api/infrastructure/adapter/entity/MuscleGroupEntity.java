@@ -1,6 +1,6 @@
 package com.mycoachfit.api.infrastructure.adapter.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;

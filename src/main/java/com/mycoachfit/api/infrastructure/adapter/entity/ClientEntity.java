@@ -7,8 +7,8 @@ import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 

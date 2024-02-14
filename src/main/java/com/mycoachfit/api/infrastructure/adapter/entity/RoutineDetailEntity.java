@@ -3,7 +3,7 @@ package com.mycoachfit.api.infrastructure.adapter.entity;
 import com.mycoachfit.api.domain.model.enumeration.ExerciseType;
 import com.mycoachfit.api.domain.model.enumeration.RoutineDetailStatus;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
