@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -30,16 +32,20 @@ public class CompanyAdapter implements CompanyPersistencePort {
 
     @Override
     public Company update(Company company) {
-        return null;
+        CompanyEntity companyEntitySaved = companyRepository.save(companyDboMapper.toDbo(company));
+        return companyDboMapper.toDomain(companyEntitySaved);
     }
 
     @Override
     public List<Company> getAll() {
-        return null;
+        return companyRepository.findAll()
+                .stream()
+                .map(companyDboMapper::toDomain)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Company findById(Long id) {
-        return null;
+    public Optional<Company> findById(Long id) {
+        return companyRepository.findById(id).map(companyDboMapper::toDomain);
     }
 }

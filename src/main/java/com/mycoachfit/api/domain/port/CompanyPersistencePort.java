@@ -3,6 +3,7 @@ package com.mycoachfit.api.domain.port;
 import com.mycoachfit.api.domain.model.Company;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CompanyPersistencePort {
     Company create(Company company);
@@ -11,5 +12,5 @@ public interface CompanyPersistencePort {
 
     List<Company> getAll();
 
-    Company findById(Long id);
+    Optional<Company> findById(Long id);
 }

@@ -8,6 +8,7 @@ import com.mycoachfit.api.domain.port.CompanyPersistencePort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyManagementService implements CompanyService {
@@ -26,8 +27,13 @@ public class CompanyManagementService implements CompanyService {
     }
 
     @Override
-    public Company update(CompanyRequestDTO companyRequestDTO) {
-        return companyPersistencePort.update(companyDtoMapper.toEntity(companyRequestDTO));
+    public Company update(Long id, CompanyRequestDTO companyRequestDTO) {
+        findById(id);
+
+        Company companyToSave = companyDtoMapper.toEntity(companyRequestDTO);
+        companyToSave.setId(id);
+
+        return companyPersistencePort.update(companyToSave);
     }
 
     @Override
@@ -37,6 +43,8 @@ public class CompanyManagementService implements CompanyService {
 
     @Override
     public Company findById(Long id) {
-        return companyPersistencePort.findById(id);
+        return companyPersistencePort.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("No se encontró ninguna compañía con el ID " + id);
+        });
     }
 }

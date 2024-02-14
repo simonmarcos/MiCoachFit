@@ -8,7 +8,7 @@ import java.util.List;
 public interface CompanyService {
     Company create(CompanyRequestDTO companyRequestDTO);
 
-    Company update(CompanyRequestDTO company);
+    Company update(Long id, CompanyRequestDTO company);
 
     List<Company> getAll();
 
