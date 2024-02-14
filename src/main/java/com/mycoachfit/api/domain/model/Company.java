@@ -11,7 +11,6 @@ import java.util.Set;
 @NoArgsConstructor
 @Data
 public class Company {
-
     private Long id;
     private String name;
     private String phone;
