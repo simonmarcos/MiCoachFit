@@ -1,13 +1,14 @@
 package com.mycoachfit.api.infrastructure.adapter.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.io.Serializable;
 
-@Table(name = "office")
 @Entity
+@Table(name = "office")
 @Data
 public class OfficeEntity extends AbstractAuditingEntity implements Serializable {
     @Id

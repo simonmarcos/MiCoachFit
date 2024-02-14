@@ -10,12 +10,6 @@ import java.util.List;
 @Service
 public class BodyMeasurementsAdapter implements BodyMeasurementsPersistencePort {
 
-    private final BodyMeasurementsRepository bodyMeasurementsRepository;
-
-    public BodyMeasurementsAdapter(BodyMeasurementsRepository bodyMeasurementsRepository) {
-        this.bodyMeasurementsRepository = bodyMeasurementsRepository;
-    }
-
     @Override
     public BodyMeasurements create(BodyMeasurements company) {
         return null;

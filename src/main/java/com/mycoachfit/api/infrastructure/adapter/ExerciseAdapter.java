@@ -10,11 +10,6 @@ import java.util.List;
 @Service
 public class ExerciseAdapter implements ExercisePersistencePort {
 
-    private final ExerciseRepository exerciseRepository;
-
-    public ExerciseAdapter(ExerciseRepository exerciseRepository) {
-        this.exerciseRepository = exerciseRepository;
-    }
 
     @Override
     public Exercise create(Exercise company) {

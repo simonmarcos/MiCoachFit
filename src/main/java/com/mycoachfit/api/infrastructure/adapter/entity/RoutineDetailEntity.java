@@ -2,14 +2,14 @@ package com.mycoachfit.api.infrastructure.adapter.entity;
 
 import com.mycoachfit.api.domain.model.enumeration.ExerciseType;
 import com.mycoachfit.api.domain.model.enumeration.RoutineDetailStatus;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.io.Serializable;
 
-@Table(name = "routineDetail")
 @Entity
+@Table(name = "routineDetail")
 @Data
 public class RoutineDetailEntity extends AbstractAuditingEntity implements Serializable {
     @Id

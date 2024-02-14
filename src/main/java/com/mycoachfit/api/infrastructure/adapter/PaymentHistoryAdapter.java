@@ -10,11 +10,6 @@ import java.util.List;
 @Service
 public class PaymentHistoryAdapter implements PaymentHistoryPersistencePort {
 
-    private final PaymentHistoryRepository paymentHistoryRepository;
-
-    public PaymentHistoryAdapter(PaymentHistoryRepository paymentHistoryRepository) {
-        this.paymentHistoryRepository = paymentHistoryRepository;
-    }
 
     @Override
     public PaymentHistory create(PaymentHistory company) {

@@ -1,7 +1,9 @@
 package com.mycoachfit.api.infrastructure.adapter.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
+
+import javax.persistence.*;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -9,8 +11,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@Table(name = "company")
 @Entity
+@Table(name = "company")
 @Data
 public class CompanyEntity extends AbstractAuditingEntity implements Serializable {
 
@@ -26,7 +28,7 @@ public class CompanyEntity extends AbstractAuditingEntity implements Serializabl
     @Column
     private String phone;
 
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = {"company"}, allowSetters = true)
+    @OneToMany(mappedBy = "companyEntity", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = {"companyEntity"}, allowSetters = true)
     private Set<OfficeEntity> officeEntities = new HashSet<>();
 }

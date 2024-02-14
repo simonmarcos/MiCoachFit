@@ -1,13 +1,13 @@
 package com.mycoachfit.api.infrastructure.adapter.entity;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
-@Table(name = "exercise")
 @Entity
+@Table(name = "exercise")
 @Data
 public class ExerciseEntity extends AbstractAuditingEntity implements Serializable {
     @Id

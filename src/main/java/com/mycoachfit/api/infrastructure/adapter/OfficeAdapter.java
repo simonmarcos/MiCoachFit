@@ -10,11 +10,6 @@ import java.util.List;
 @Service
 public class OfficeAdapter implements OfficePersistencePort {
 
-    private final OfficeRepository officeRepository;
-
-    public OfficeAdapter(OfficeRepository officeRepository) {
-        this.officeRepository = officeRepository;
-    }
 
     @Override
     public Office create(Office company) {

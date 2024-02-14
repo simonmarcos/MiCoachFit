@@ -71,6 +71,11 @@
             <artifactId>lombok-mapstruct-binding</artifactId>
             <version>${lombok-mapstruct-binding.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version> <!-- O la versión más reciente disponible -->
+        </dependency>
     </dependencies>
     <build>
         <plugins>

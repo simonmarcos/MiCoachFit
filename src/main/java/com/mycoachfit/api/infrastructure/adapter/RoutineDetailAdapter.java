@@ -10,11 +10,6 @@ import java.util.List;
 @Service
 public class RoutineDetailAdapter implements RoutineDetailPersistencePort {
 
-    private final RoutineDetailRepository routineDetailRepository;
-
-    public RoutineDetailAdapter(RoutineDetailRepository routineDetailRepository) {
-        this.routineDetailRepository = routineDetailRepository;
-    }
 
     @Override
     public RoutineDetail create(RoutineDetail company) {

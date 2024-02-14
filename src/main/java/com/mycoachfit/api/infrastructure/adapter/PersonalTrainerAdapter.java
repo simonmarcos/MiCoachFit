@@ -10,11 +10,6 @@ import java.util.List;
 @Service
 public class PersonalTrainerAdapter implements PersonalTrainerPersistencePort {
 
-    private final PersonalTrainerRepository personalTrainerRepository;
-
-    public PersonalTrainerAdapter(PersonalTrainerRepository personalTrainerRepository) {
-        this.personalTrainerRepository = personalTrainerRepository;
-    }
 
     @Override
     public PersonalTrainer create(PersonalTrainer company) {

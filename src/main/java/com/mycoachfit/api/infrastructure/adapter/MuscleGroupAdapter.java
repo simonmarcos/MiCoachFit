@@ -10,11 +10,6 @@ import java.util.List;
 @Service
 public class MuscleGroupAdapter implements MuscleGroupPersistencePort {
 
-    private final MuscleGroupRepository muscleGroupRepository;
-
-    public MuscleGroupAdapter(MuscleGroupRepository muscleGroupRepository) {
-        this.muscleGroupRepository = muscleGroupRepository;
-    }
 
     @Override
     public MuscleGroup create(MuscleGroup company) {

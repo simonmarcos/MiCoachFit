@@ -1,15 +1,16 @@
 package com.mycoachfit.api.infrastructure.adapter.entity;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Table(name = "client")
 @Entity
+@Table(name = "client")
 @Data
 public class ClientEntity extends AbstractAuditingEntity implements Serializable {
     @Id
@@ -44,8 +45,8 @@ public class ClientEntity extends AbstractAuditingEntity implements Serializable
     @Column
     private Boolean isActive;
 
-    @JsonIgnoreProperties(value = {"client"}, allowSetters = true)
-    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = {"clientEntity"}, allowSetters = true)
+    @OneToOne
     @JoinColumn(unique = true)
     private PersonalTrainerEntity personalTrainerEntity;
 }

@@ -1,13 +1,14 @@
 package com.mycoachfit.api.infrastructure.adapter.entity;
 
-import jakarta.persistence.*;
+
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
-@Table(name = "bodyMeasurements")
 @Entity
+@Table(name = "bodyMeasurements")
 @Data
 public class BodyMeasurementsEntity extends AbstractAuditingEntity {
     @Id

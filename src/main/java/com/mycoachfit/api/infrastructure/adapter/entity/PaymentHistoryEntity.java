@@ -1,6 +1,6 @@
 package com.mycoachfit.api.infrastructure.adapter.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -8,8 +8,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Table(name = "paymentHistory")
 @Entity
+@Table(name = "paymentHistory")
 @Data
 public class PaymentHistoryEntity extends AbstractAuditingEntity implements Serializable {
     @Id

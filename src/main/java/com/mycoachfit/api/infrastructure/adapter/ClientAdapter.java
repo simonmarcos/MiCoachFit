@@ -13,11 +13,6 @@ import java.util.List;
 @Service
 public class ClientAdapter implements ClientPersistencePort {
 
-    private final ClientRepository clientRepository;
-
-    public ClientAdapter(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
-    }
 
     @Override
     public Client create(Client company) {

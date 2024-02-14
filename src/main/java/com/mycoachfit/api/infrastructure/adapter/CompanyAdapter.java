@@ -10,11 +10,6 @@ import java.util.List;
 @Service
 public class CompanyAdapter implements CompanyPersistencePort {
 
-    private final CompanyRepository companyRepository;
-
-    public CompanyAdapter(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
-    }
 
     @Override
     public Company create(Company company) {
