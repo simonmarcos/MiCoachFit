@@ -2,44 +2,21 @@ package com.mycoachfit.api.domain.model;
 
 import com.mycoachfit.api.domain.model.enumeration.ExerciseType;
 import com.mycoachfit.api.domain.model.enumeration.RoutineDetailStatus;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
-@Table(name = "routineDetail")
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class RoutineDetail extends AbstractAuditingEntity implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+public class RoutineDetail {
     private Long id;
-
-    @NotNull
-    @Column
     private ExerciseType exerciseType;
-
-    @NotNull
-    @Column
     private String series;
-
-    @NotNull
-    @Column
     private String repetitions;
-
-    @Column
     private Integer restTime;
-
-    @Column
     private String expectedWeightLoad;
-
-    @Column
     private String weightLoadDetail;
-
-    @Column
     private String observations;
-
-    @Column
     private RoutineDetailStatus status;
 }

@@ -1,20 +1,13 @@
 package com.mycoachfit.api.domain.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
-@Table(name = "muscleGroup")
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class MuscleGroup extends AbstractAuditingEntity implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
+public class MuscleGroup {
     private Long id;
-
-    @NotNull
-    @Column
     private String name;
 }

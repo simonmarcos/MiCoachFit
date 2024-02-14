@@ -1,4 +1,4 @@
-package com.mycoachfit.api.domain.model;
+package com.mycoachfit.api.infrastructure.adapter.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
