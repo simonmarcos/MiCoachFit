@@ -2,6 +2,7 @@ package com.mycoachfit.api.infrastructure.adapter;
 
 import com.mycoachfit.api.domain.model.Company;
 import com.mycoachfit.api.domain.port.CompanyPersistencePort;
+import com.mycoachfit.api.infrastructure.adapter.entity.CompanyEntity;
 import com.mycoachfit.api.infrastructure.adapter.mapper.CompanyDboMapper;
 import com.mycoachfit.api.infrastructure.adapter.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class CompanyAdapter implements CompanyPersistencePort {
 
     @Override
     public Company create(Company company) {
-        var companyEntitySaved = companyRepository.save(companyDboMapper.toDbo(company));
+        CompanyEntity companyEntitySaved = companyRepository.save(companyDboMapper.toDbo(company));
         return companyDboMapper.toDomain(companyEntitySaved);
     }
 
