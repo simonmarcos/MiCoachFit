@@ -26,17 +26,17 @@ public class CompanyManagementService implements CompanyService {
     }
 
     @Override
-    public Company update(CompanyRequestDTO company) {
-        return null;
+    public Company update(CompanyRequestDTO companyRequestDTO) {
+        return companyPersistencePort.update(companyDtoMapper.toEntity(companyRequestDTO));
     }
 
     @Override
     public List<Company> getAll() {
-        return null;
+        return companyPersistencePort.getAll();
     }
 
     @Override
     public Company findById(Long id) {
-        return null;
+        return companyPersistencePort.findById(id);
     }
 }

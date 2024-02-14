@@ -3,9 +3,11 @@ package com.mycoachfit.api.infrastructure.adapter;
 import com.mycoachfit.api.domain.model.Exercise;
 import com.mycoachfit.api.domain.port.ExercisePersistencePort;
 import com.mycoachfit.api.infrastructure.adapter.repository.ExerciseRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ExerciseAdapter implements ExercisePersistencePort {
 
     private final ExerciseRepository exerciseRepository;

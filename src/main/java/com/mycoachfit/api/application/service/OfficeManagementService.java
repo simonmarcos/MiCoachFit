@@ -1,5 +1,6 @@
 package com.mycoachfit.api.application.service;
 
+import com.mycoachfit.api.application.mapper.OfficeDtoMapper;
 import com.mycoachfit.api.application.usercases.OfficeService;
 import com.mycoachfit.api.domain.model.Office;
 import com.mycoachfit.api.domain.model.dto.request.OfficeRequestDTO;
@@ -12,28 +13,30 @@ import java.util.List;
 public class OfficeManagementService implements OfficeService {
 
     private final OfficePersistencePort officePersistencePort;
+    private final OfficeDtoMapper officeDtoMapper;
 
-    public OfficeManagementService(OfficePersistencePort officePersistencePort) {
+    public OfficeManagementService(OfficePersistencePort officePersistencePort, OfficeDtoMapper officeDtoMapper) {
         this.officePersistencePort = officePersistencePort;
+        this.officeDtoMapper = officeDtoMapper;
     }
 
     @Override
     public Office create(OfficeRequestDTO officeRequestDTO) {
-        return null;
+        return officePersistencePort.create(officeDtoMapper.toEntity(officeRequestDTO));
     }
 
     @Override
     public Office update(OfficeRequestDTO officeRequestDTO) {
-        return null;
+        return officePersistencePort.update(officeDtoMapper.toEntity(officeRequestDTO));
     }
 
     @Override
     public List<Office> getAll() {
-        return null;
+        return officePersistencePort.getAll();
     }
 
     @Override
     public Office findById(Long id) {
-        return null;
+        return officePersistencePort.findById(id);
     }
 }

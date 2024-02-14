@@ -1,5 +1,6 @@
 package com.mycoachfit.api.application.service;
 
+import com.mycoachfit.api.application.mapper.RoutineDetailDtoMapper;
 import com.mycoachfit.api.application.usercases.RoutineDetailService;
 import com.mycoachfit.api.domain.model.RoutineDetail;
 import com.mycoachfit.api.domain.model.dto.request.RoutineDetailRequestDTO;
@@ -12,28 +13,30 @@ import java.util.List;
 public class RoutineDetailManagementService implements RoutineDetailService {
 
     private final RoutineDetailPersistencePort routineDetailPersistencePort;
+    private final RoutineDetailDtoMapper routineDetailDtoMapper;
 
-    public RoutineDetailManagementService(RoutineDetailPersistencePort routineDetailPersistencePort) {
+    public RoutineDetailManagementService(RoutineDetailPersistencePort routineDetailPersistencePort, RoutineDetailDtoMapper routineDetailDtoMapper) {
         this.routineDetailPersistencePort = routineDetailPersistencePort;
+        this.routineDetailDtoMapper = routineDetailDtoMapper;
     }
 
     @Override
     public RoutineDetail create(RoutineDetailRequestDTO routineDetailRequestDTO) {
-        return null;
+        return routineDetailPersistencePort.create(routineDetailDtoMapper.toEntity(routineDetailRequestDTO));
     }
 
     @Override
     public RoutineDetail update(RoutineDetailRequestDTO routineDetailRequestDTO) {
-        return null;
+        return routineDetailPersistencePort.update(routineDetailDtoMapper.toEntity(routineDetailRequestDTO));
     }
 
     @Override
     public List<RoutineDetail> getAll() {
-        return null;
+        return routineDetailPersistencePort.getAll();
     }
 
     @Override
     public RoutineDetail findById(Long id) {
-        return null;
+        return routineDetailPersistencePort.findById(id);
     }
 }

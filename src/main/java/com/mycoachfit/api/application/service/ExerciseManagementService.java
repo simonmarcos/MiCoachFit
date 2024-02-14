@@ -1,5 +1,6 @@
 package com.mycoachfit.api.application.service;
 
+import com.mycoachfit.api.application.mapper.ExerciseDtoMapper;
 import com.mycoachfit.api.application.usercases.ExerciseService;
 import com.mycoachfit.api.domain.model.Exercise;
 import com.mycoachfit.api.domain.model.dto.request.ExerciseRequestDTO;
@@ -13,27 +14,30 @@ public class ExerciseManagementService implements ExerciseService {
 
     private final ExercisePersistencePort exercisePersistencePort;
 
-    public ExerciseManagementService(ExercisePersistencePort exercisePersistencePort) {
+    private final ExerciseDtoMapper exceptionMapper;
+
+    public ExerciseManagementService(ExercisePersistencePort exercisePersistencePort, ExerciseDtoMapper exceptionMapper) {
         this.exercisePersistencePort = exercisePersistencePort;
+        this.exceptionMapper = exceptionMapper;
     }
 
     @Override
     public Exercise create(ExerciseRequestDTO exerciseRequestDTO) {
-        return null;
+        return exercisePersistencePort.create(exceptionMapper.toEntity(exerciseRequestDTO));
     }
 
     @Override
     public Exercise update(ExerciseRequestDTO exerciseRequestDTO) {
-        return null;
+        return exercisePersistencePort.update(exceptionMapper.toEntity(exerciseRequestDTO));
     }
 
     @Override
     public List<Exercise> getAll() {
-        return null;
+        return exercisePersistencePort.getAll();
     }
 
     @Override
     public Exercise findById(Long id) {
-        return null;
+        return exercisePersistencePort.findById(id);
     }
 }

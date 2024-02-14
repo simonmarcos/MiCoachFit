@@ -1,5 +1,6 @@
 package com.mycoachfit.api.application.service;
 
+import com.mycoachfit.api.application.mapper.ClientDtoMapper;
 import com.mycoachfit.api.application.usercases.ClientService;
 import com.mycoachfit.api.domain.model.Client;
 import com.mycoachfit.api.domain.model.dto.request.ClientRequestDTO;
@@ -13,27 +14,30 @@ public class ClientManagementService implements ClientService {
 
     private final ClientPersistencePort clientPersistencePort;
 
-    public ClientManagementService(ClientPersistencePort clientPersistencePort) {
+    private final ClientDtoMapper clientDtoMapper;
+
+    public ClientManagementService(ClientPersistencePort clientPersistencePort, ClientDtoMapper clientDtoMapper) {
         this.clientPersistencePort = clientPersistencePort;
+        this.clientDtoMapper = clientDtoMapper;
     }
 
     @Override
     public Client create(ClientRequestDTO clientRequestDTO) {
-        return null;
+        return clientPersistencePort.create(clientDtoMapper.toEntity(clientRequestDTO));
     }
 
     @Override
     public Client update(ClientRequestDTO clientRequestDTO) {
-        return null;
+        return clientPersistencePort.update(clientDtoMapper.toEntity(clientRequestDTO));
     }
 
     @Override
     public List<Client> getAll() {
-        return null;
+        return clientPersistencePort.getAll();
     }
 
     @Override
     public Client findById(Long id) {
-        return null;
+        return clientPersistencePort.findById(id);
     }
 }

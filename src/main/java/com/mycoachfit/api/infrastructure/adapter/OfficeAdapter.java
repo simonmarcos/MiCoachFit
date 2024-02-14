@@ -3,9 +3,11 @@ package com.mycoachfit.api.infrastructure.adapter;
 import com.mycoachfit.api.domain.model.Office;
 import com.mycoachfit.api.domain.port.OfficePersistencePort;
 import com.mycoachfit.api.infrastructure.adapter.repository.OfficeRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OfficeAdapter implements OfficePersistencePort {
 
     private final OfficeRepository officeRepository;

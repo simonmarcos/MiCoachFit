@@ -1,11 +1,9 @@
 package com.mycoachfit.api.domain.port;
 
 import com.mycoachfit.api.domain.model.Exercise;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
 public interface ExercisePersistencePort {
     Exercise create(Exercise company);
 

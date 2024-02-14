@@ -1,5 +1,6 @@
 package com.mycoachfit.api.application.service;
 
+import com.mycoachfit.api.application.mapper.MuscleGroupDtoMapper;
 import com.mycoachfit.api.application.usercases.MuscleGroupService;
 import com.mycoachfit.api.domain.model.MuscleGroup;
 import com.mycoachfit.api.domain.model.dto.request.MuscleGroupRequestDTO;
@@ -12,28 +13,30 @@ import java.util.List;
 public class MuscleGroupManagementService implements MuscleGroupService {
 
     private final MuscleGroupPersistencePort muscleGroupPersistencePort;
+    private final MuscleGroupDtoMapper muscleGroupDtoMapper;
 
-    public MuscleGroupManagementService(MuscleGroupPersistencePort muscleGroupPersistencePort) {
+    public MuscleGroupManagementService(MuscleGroupPersistencePort muscleGroupPersistencePort, MuscleGroupDtoMapper muscleGroupDtoMapper) {
         this.muscleGroupPersistencePort = muscleGroupPersistencePort;
+        this.muscleGroupDtoMapper = muscleGroupDtoMapper;
     }
 
     @Override
     public MuscleGroup create(MuscleGroupRequestDTO muscleGroupRequestDTO) {
-        return null;
+        return muscleGroupPersistencePort.create(muscleGroupDtoMapper.toEntity(muscleGroupRequestDTO));
     }
 
     @Override
     public MuscleGroup update(MuscleGroupRequestDTO muscleGroupRequestDTO) {
-        return null;
+        return muscleGroupPersistencePort.update(muscleGroupDtoMapper.toEntity(muscleGroupRequestDTO));
     }
 
     @Override
     public List<MuscleGroup> getAll() {
-        return null;
+        return muscleGroupPersistencePort.getAll();
     }
 
     @Override
     public MuscleGroup findById(Long id) {
-        return null;
+        return muscleGroupPersistencePort.findById(id);
     }
 }
