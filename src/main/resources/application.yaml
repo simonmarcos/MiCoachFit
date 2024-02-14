@@ -1,4 +1,4 @@
-# Configuración de la base de datos PostgreSQL
+# Configuracion de la base de datos PostgreSQL
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/mycoachfit
@@ -9,7 +9,7 @@ spring:
       maximum-pool-size: 5
       minimum-idle: 2
 
-  # Configuración de Hibernate (opcional, si estás usando JPA)
+  # Configuracion de Hibernate (opcional, si estas usando JPA)
   jpa:
     properties:
       hibernate:
@@ -18,11 +18,11 @@ spring:
       ddl-auto: update
     show-sql: true
 
-# Configuración de la zona horaria (opcional, ajusta según tu preferencia)
-# Puedes usar esta línea o la siguiente, no ambas
+# Configuracion de la zona horaria (opcional, ajusta segï¿½n tu preferencia)
+# Puedes usar esta linea o la siguiente, no ambas
 #   datasource:
 #     jdbc-url: jdbc:postgresql://localhost:5432/mycoachfit?serverTimezone=UTC
 
-# Puerto del servidor de la aplicación (ajusta según sea necesario)
+# Puerto del servidor de la aplicacion (ajusta segun sea necesario)
 server:
   port: 8080

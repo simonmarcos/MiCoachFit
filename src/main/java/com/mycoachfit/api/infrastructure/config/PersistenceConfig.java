@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories("com.mycoachfit.api.infrastructure.adapter.repository")
 class PersistenceConfig {
     @Bean
-    public AuditorAware<String> auditorAware() {
+    public AuditorAware<Long> auditorAware() {
         return new AuditorAwareImpl();
     }
 }
