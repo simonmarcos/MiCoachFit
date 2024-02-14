@@ -1,31 +1,35 @@
 package com.mycoachfit.api.domain.model;
 
+import com.mycoachfit.api.domain.model.enumeration.ExerciseType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
-import java.io.Serializable;
+import java.time.LocalDate;
 
-@Table(name = "office")
+@Table(name = "bodyMeasurements")
 @Entity
 @Data
-public class Office extends AbstractAuditingEntity implements Serializable {
+public class BodyMeasurements extends AbstractAuditingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     private Long id;
 
     @NotNull
     @Column
-    private String address;
+    private LocalDate date;
 
     @NotNull
     @Column
-    private String latitude;
+    private int weight;
 
     @NotNull
     @Column
-    private String longitude;
+    private int height;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Company company;
+    @Column
+    private String bodyMeasurements;
+
+    @Column
+    private String imc;
 }

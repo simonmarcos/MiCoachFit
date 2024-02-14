@@ -5,27 +5,29 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
-@Table(name = "office")
+@Table(name = "paymentHistory")
 @Entity
 @Data
-public class Office extends AbstractAuditingEntity implements Serializable {
+public class PaymentHistory extends AbstractAuditingEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     private Long id;
 
     @NotNull
     @Column
-    private String address;
+    private LocalDate paymentDate;
 
     @NotNull
     @Column
-    private String latitude;
+    private LocalDate expirationDate;
 
     @NotNull
     @Column
-    private String longitude;
+    private BigDecimal amount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Company company;
+    private Client client;
 }

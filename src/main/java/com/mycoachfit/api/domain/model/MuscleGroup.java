@@ -6,26 +6,15 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-@Table(name = "office")
+@Table(name = "muscleGroup")
 @Entity
 @Data
-public class Office extends AbstractAuditingEntity implements Serializable {
+public class MuscleGroup extends AbstractAuditingEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     private Long id;
 
     @NotNull
     @Column
-    private String address;
-
-    @NotNull
-    @Column
-    private String latitude;
-
-    @NotNull
-    @Column
-    private String longitude;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Company company;
+    private String name;
 }
