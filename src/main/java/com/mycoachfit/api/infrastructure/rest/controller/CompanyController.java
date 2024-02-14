@@ -3,6 +3,7 @@ package com.mycoachfit.api.infrastructure.rest.controller;
 import com.mycoachfit.api.application.usercases.CompanyService;
 import com.mycoachfit.api.domain.model.Company;
 import com.mycoachfit.api.domain.model.dto.request.CompanyRequestDTO;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class CompanyController {
     }
 
     @PostMapping()
-    public ResponseEntity<Company> createCompany(@RequestBody CompanyRequestDTO companyRequestDTO) {
+    public ResponseEntity<Company> createCompany(@RequestBody @Valid CompanyRequestDTO companyRequestDTO) {
         Company companyResponse = companyService.create(companyRequestDTO);
         return ResponseEntity.ok(companyResponse);
     }

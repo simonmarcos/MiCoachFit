@@ -13,4 +13,6 @@ public interface CompanyPersistencePort {
     List<Company> getAll();
 
     Optional<Company> findById(Long id);
+
+    Optional<Company> findByName(String name);
 }

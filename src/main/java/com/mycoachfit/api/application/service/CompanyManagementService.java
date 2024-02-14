@@ -23,6 +23,11 @@ public class CompanyManagementService implements CompanyService {
 
     @Override
     public Company create(CompanyRequestDTO companyRequestDTO) {
+        Optional<Company> companyInOurDB = companyPersistencePort.findByName(companyRequestDTO.getName());
+        if (companyInOurDB.isPresent()) {
+            throw new RuntimeException("Ya se encuentra creada una compañia con el mismo nombre");
+        }
+
         return companyPersistencePort.create(companyDtoMapper.toEntity(companyRequestDTO));
     }
 

@@ -48,4 +48,9 @@ public class CompanyAdapter implements CompanyPersistencePort {
     public Optional<Company> findById(Long id) {
         return companyRepository.findById(id).map(companyDboMapper::toDomain);
     }
+
+    @Override
+    public Optional<Company> findByName(String name) {
+        return companyRepository.findByName(name).map(companyDboMapper::toDomain);
+    }
 }
