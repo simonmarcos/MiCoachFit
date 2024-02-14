@@ -1,41 +1,43 @@
 package com.mycoachfit.api.application.service;
 
+import com.mycoachfit.api.application.mapper.BodyMeasurementsDtoMapper;
 import com.mycoachfit.api.application.usercases.BodyMeasurementsService;
-import com.mycoachfit.api.application.usercases.ExerciseService;
 import com.mycoachfit.api.domain.model.BodyMeasurements;
-import com.mycoachfit.api.domain.model.Exercise;
 import com.mycoachfit.api.domain.model.dto.request.BodyMeasurementsRequestDTO;
-import com.mycoachfit.api.domain.model.dto.request.ExerciseRequestDTO;
 import com.mycoachfit.api.domain.port.BodyMeasurementsPersistencePort;
-import com.mycoachfit.api.domain.port.ExercisePersistencePort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BodyMeasurementsManagementService implements BodyMeasurementsService {
 
     private final BodyMeasurementsPersistencePort bodyMeasurementsPersistencePort;
 
-    public BodyMeasurementsManagementService(BodyMeasurementsPersistencePort bodyMeasurementsPersistencePort) {
+    private final BodyMeasurementsDtoMapper bodyMeasurementsDtoMapper;
+
+    public BodyMeasurementsManagementService(BodyMeasurementsPersistencePort bodyMeasurementsPersistencePort, BodyMeasurementsDtoMapper bodyMeasurementsDtoMapper) {
         this.bodyMeasurementsPersistencePort = bodyMeasurementsPersistencePort;
+        this.bodyMeasurementsDtoMapper = bodyMeasurementsDtoMapper;
     }
 
     @Override
     public BodyMeasurements create(BodyMeasurementsRequestDTO bodyMeasurementsRequestDTO) {
-        return null;
+        return bodyMeasurementsPersistencePort.create(bodyMeasurementsDtoMapper.toEntity(bodyMeasurementsRequestDTO));
     }
 
     @Override
     public BodyMeasurements update(BodyMeasurementsRequestDTO bodyMeasurementsRequestDTO) {
-        return null;
+        return bodyMeasurementsPersistencePort.create(bodyMeasurementsDtoMapper.toEntity(bodyMeasurementsRequestDTO));
     }
 
     @Override
     public List<BodyMeasurements> getAll() {
-        return null;
+        return bodyMeasurementsPersistencePort.getAll();
     }
 
     @Override
     public BodyMeasurements findById(Long id) {
-        return null;
+        return bodyMeasurementsPersistencePort.findById(id);
     }
 }

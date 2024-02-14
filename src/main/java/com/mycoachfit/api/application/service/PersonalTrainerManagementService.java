@@ -3,9 +3,11 @@ package com.mycoachfit.api.application.service;
 import com.mycoachfit.api.application.usercases.PersonalTrainerService;
 import com.mycoachfit.api.domain.model.PersonalTrainer;
 import com.mycoachfit.api.domain.model.dto.request.PersonalTrainerRequestDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PersonalTrainerManagementService implements PersonalTrainerService {
 
     private final PersonalTrainerService personalTrainerService;

@@ -4,9 +4,11 @@ import com.mycoachfit.api.application.usercases.OfficeService;
 import com.mycoachfit.api.domain.model.Office;
 import com.mycoachfit.api.domain.model.dto.request.OfficeRequestDTO;
 import com.mycoachfit.api.domain.port.OfficePersistencePort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OfficeManagementService implements OfficeService {
 
     private final OfficePersistencePort officePersistencePort;

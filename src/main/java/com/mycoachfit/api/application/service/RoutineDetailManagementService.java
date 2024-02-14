@@ -4,9 +4,11 @@ import com.mycoachfit.api.application.usercases.RoutineDetailService;
 import com.mycoachfit.api.domain.model.RoutineDetail;
 import com.mycoachfit.api.domain.model.dto.request.RoutineDetailRequestDTO;
 import com.mycoachfit.api.domain.port.RoutineDetailPersistencePort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class RoutineDetailManagementService implements RoutineDetailService {
 
     private final RoutineDetailPersistencePort routineDetailPersistencePort;

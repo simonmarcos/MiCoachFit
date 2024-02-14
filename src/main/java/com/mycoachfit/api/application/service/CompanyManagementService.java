@@ -5,9 +5,11 @@ import com.mycoachfit.api.application.usercases.CompanyService;
 import com.mycoachfit.api.domain.model.Company;
 import com.mycoachfit.api.domain.model.dto.request.CompanyRequestDTO;
 import com.mycoachfit.api.domain.port.CompanyPersistencePort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CompanyManagementService implements CompanyService {
 
     private final CompanyPersistencePort companyPersistencePort;

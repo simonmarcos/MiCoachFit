@@ -4,9 +4,11 @@ import com.mycoachfit.api.application.usercases.ClientService;
 import com.mycoachfit.api.domain.model.Client;
 import com.mycoachfit.api.domain.model.dto.request.ClientRequestDTO;
 import com.mycoachfit.api.domain.port.ClientPersistencePort;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ClientManagementService implements ClientService {
 
     private final ClientPersistencePort clientPersistencePort;
