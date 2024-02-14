@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/company")
+@RequestMapping("/api/companies")
 public class CompanyController {
 
     private final CompanyService companyService;
@@ -19,7 +19,7 @@ public class CompanyController {
         this.companyService = companyService;
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<Company> createCompany(@RequestBody CompanyRequestDTO companyRequestDTO) {
         Company companyResponse = companyService.create(companyRequestDTO);
         return ResponseEntity.ok(companyResponse);

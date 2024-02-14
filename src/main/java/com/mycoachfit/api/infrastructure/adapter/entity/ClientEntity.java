@@ -1,13 +1,10 @@
 package com.mycoachfit.api.infrastructure.adapter.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.validation.constraints.NotNull;
-
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;

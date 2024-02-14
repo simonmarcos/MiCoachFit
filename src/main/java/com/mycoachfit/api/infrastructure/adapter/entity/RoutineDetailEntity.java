@@ -4,7 +4,7 @@ import com.mycoachfit.api.domain.model.enumeration.ExerciseType;
 import com.mycoachfit.api.domain.model.enumeration.RoutineDetailStatus;
 
 import jakarta.persistence.*;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

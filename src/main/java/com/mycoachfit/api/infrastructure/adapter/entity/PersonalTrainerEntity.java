@@ -2,7 +2,7 @@ package com.mycoachfit.api.infrastructure.adapter.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
