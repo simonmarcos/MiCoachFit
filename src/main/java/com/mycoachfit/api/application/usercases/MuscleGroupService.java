@@ -10,7 +10,7 @@ import java.util.List;
 public interface MuscleGroupService {
     MuscleGroup create(MuscleGroupRequestDTO muscleGroupRequestDTO);
 
-    MuscleGroup update(MuscleGroupRequestDTO muscleGroupRequestDTO);
+    MuscleGroup update(Long id, MuscleGroupRequestDTO muscleGroupRequestDTO);
 
     List<MuscleGroup> getAll();
 

@@ -3,6 +3,7 @@ package com.mycoachfit.api.domain.port;
 import com.mycoachfit.api.domain.model.MuscleGroup;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface MuscleGroupPersistencePort {
@@ -12,5 +13,5 @@ public interface MuscleGroupPersistencePort {
 
     List<MuscleGroup> getAll();
 
-    MuscleGroup findById(Long id);
+    Optional<MuscleGroup> findById(Long id);
 }

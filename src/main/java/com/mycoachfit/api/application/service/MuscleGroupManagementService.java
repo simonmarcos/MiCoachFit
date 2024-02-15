@@ -8,6 +8,7 @@ import com.mycoachfit.api.domain.port.MuscleGroupPersistencePort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MuscleGroupManagementService implements MuscleGroupService {
@@ -26,8 +27,13 @@ public class MuscleGroupManagementService implements MuscleGroupService {
     }
 
     @Override
-    public MuscleGroup update(MuscleGroupRequestDTO muscleGroupRequestDTO) {
-        return muscleGroupPersistencePort.update(muscleGroupDtoMapper.toEntity(muscleGroupRequestDTO));
+    public MuscleGroup update(Long id, MuscleGroupRequestDTO muscleGroupRequestDTO) {
+        findById(id);
+
+        MuscleGroup muscleGroupToSave = muscleGroupDtoMapper.toEntity(muscleGroupRequestDTO);
+        muscleGroupToSave.setId(id);
+
+        return muscleGroupPersistencePort.update(muscleGroupToSave);
     }
 
     @Override
@@ -37,6 +43,8 @@ public class MuscleGroupManagementService implements MuscleGroupService {
 
     @Override
     public MuscleGroup findById(Long id) {
-        return muscleGroupPersistencePort.findById(id);
+        return muscleGroupPersistencePort.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("No se encontró ningún grupo muscular con el ID " + id);
+        });
     }
 }
