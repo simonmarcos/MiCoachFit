@@ -1,8 +1,7 @@
 package com.mycoachfit.api.infrastructure.rest.advice.model;
 
 public enum BusinessErrorCodeEnum {
-    CLIENTE_EXISTENTE("C-1"),
-    CLIENTE_INEXISTENTE("C-2");
+    EXISTING_RECORD("C-1");
     private final String code;
 
     BusinessErrorCodeEnum(String code) {

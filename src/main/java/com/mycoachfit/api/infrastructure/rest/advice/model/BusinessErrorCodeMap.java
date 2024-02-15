@@ -7,8 +7,7 @@ public class BusinessErrorCodeMap {
     private static final Map<BusinessErrorCodeEnum, String> BUSINESS_ERROR_MAP = new HashMap<>();
 
     static {
-        BUSINESS_ERROR_MAP.put(BusinessErrorCodeEnum.CLIENTE_EXISTENTE, "Cliente existente");
-        BUSINESS_ERROR_MAP.put(BusinessErrorCodeEnum.CLIENTE_INEXISTENTE, "Cliente inexistente");
+        BUSINESS_ERROR_MAP.put(BusinessErrorCodeEnum.EXISTING_RECORD, "El registro ya se encuentra en la DB");
     }
 
     public static String getMessage(BusinessErrorCodeEnum errorCode) {

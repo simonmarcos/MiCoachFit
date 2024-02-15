@@ -5,10 +5,7 @@ import com.mycoachfit.api.application.usercases.CompanyService;
 import com.mycoachfit.api.domain.model.Company;
 import com.mycoachfit.api.domain.model.dto.request.CompanyRequestDTO;
 import com.mycoachfit.api.domain.port.CompanyPersistencePort;
-import com.mycoachfit.api.infrastructure.rest.advice.BusinessException;
-import com.mycoachfit.api.infrastructure.rest.advice.model.BusinessErrorCodeEnum;
-import com.mycoachfit.api.infrastructure.rest.advice.model.BusinessErrorCodeMap;
-import org.springframework.http.HttpStatus;
+import com.mycoachfit.api.infrastructure.rest.advice.ExistingRecordException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,9 +26,7 @@ public class CompanyManagementService implements CompanyService {
     public Company create(CompanyRequestDTO companyRequestDTO) {
         Optional<Company> companyInOurDB = companyPersistencePort.findByName(companyRequestDTO.getName());
         if (companyInOurDB.isPresent()) {
-            throw new BusinessException(HttpStatus.CONFLICT,
-                    BusinessErrorCodeEnum.CLIENTE_EXISTENTE,
-                    BusinessErrorCodeMap.getMessage(BusinessErrorCodeEnum.CLIENTE_EXISTENTE));
+            throw new ExistingRecordException();
         }
 
         return companyPersistencePort.create(companyDtoMapper.toEntity(companyRequestDTO));
