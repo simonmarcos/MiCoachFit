@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CustomException extends RuntimeException {
+public class BusinessException extends RuntimeException {
     private HttpStatus httpErrorCode;
     private BusinessErrorCodeEnum businessCode;
     private String businessDetail;

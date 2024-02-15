@@ -1,6 +1,6 @@
 package com.mycoachfit.api.infrastructure.rest.advice;
 
-import com.mycoachfit.api.infrastructure.rest.advice.model.CustomErrorResponse;
+import com.mycoachfit.api.infrastructure.rest.advice.model.BusinessErrorResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,13 +13,13 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 //    private static final Logger log = LoggerFactory.getLogger(CustomExceptionHandler.class);
 
-    @ExceptionHandler(CustomException.class)
-    public ResponseEntity<Object> handleCustomException(CustomException ex, WebRequest request) {
+    @ExceptionHandler(BusinessException.class)
+    public ResponseEntity<Object> handleCustomException(BusinessException ex, WebRequest request) {
 //        log.error("Error: {} - {}", ex.getHttpErrorCode(), ex.getMessage());
 
         String errorResult = String.format("%d %s", ex.getHttpErrorCode().value(), ex.getHttpErrorCode().name());
 
-        CustomErrorResponse errorResponse = new CustomErrorResponse(
+        BusinessErrorResponse errorResponse = new BusinessErrorResponse(
                 errorResult,
                 "",
                 ex.getBusinessCode().getCode(),
