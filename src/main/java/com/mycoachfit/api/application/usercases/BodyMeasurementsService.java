@@ -8,7 +8,7 @@ import java.util.List;
 public interface BodyMeasurementsService {
     BodyMeasurements create(BodyMeasurementsRequestDTO bodyMeasurementsRequestDTO);
 
-    BodyMeasurements update(BodyMeasurementsRequestDTO bodyMeasurementsRequestDTO);
+    BodyMeasurements update(Long id, BodyMeasurementsRequestDTO bodyMeasurementsRequestDTO);
 
     List<BodyMeasurements> getAll();
 

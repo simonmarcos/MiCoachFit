@@ -3,6 +3,7 @@ package com.mycoachfit.api.domain.port;
 import com.mycoachfit.api.domain.model.BodyMeasurements;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BodyMeasurementsPersistencePort {
     BodyMeasurements create(BodyMeasurements company);
@@ -11,5 +12,5 @@ public interface BodyMeasurementsPersistencePort {
 
     List<BodyMeasurements> getAll();
 
-    BodyMeasurements findById(Long id);
+    Optional<BodyMeasurements> findById(Long id);
 }

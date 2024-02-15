@@ -13,7 +13,6 @@ import java.util.List;
 public class BodyMeasurementsManagementService implements BodyMeasurementsService {
 
     private final BodyMeasurementsPersistencePort bodyMeasurementsPersistencePort;
-
     private final BodyMeasurementsDtoMapper bodyMeasurementsDtoMapper;
 
     public BodyMeasurementsManagementService(BodyMeasurementsPersistencePort bodyMeasurementsPersistencePort, BodyMeasurementsDtoMapper bodyMeasurementsDtoMapper) {
@@ -27,8 +26,13 @@ public class BodyMeasurementsManagementService implements BodyMeasurementsServic
     }
 
     @Override
-    public BodyMeasurements update(BodyMeasurementsRequestDTO bodyMeasurementsRequestDTO) {
-        return bodyMeasurementsPersistencePort.create(bodyMeasurementsDtoMapper.toEntity(bodyMeasurementsRequestDTO));
+    public BodyMeasurements update(Long id, BodyMeasurementsRequestDTO bodyMeasurementsRequestDTO) {
+        findById(id);
+
+        BodyMeasurements bodyMeasurementsToSave = bodyMeasurementsDtoMapper.toEntity(bodyMeasurementsRequestDTO);
+        bodyMeasurementsToSave.setId(id);
+
+        return bodyMeasurementsPersistencePort.update(bodyMeasurementsToSave);
     }
 
     @Override
@@ -38,6 +42,8 @@ public class BodyMeasurementsManagementService implements BodyMeasurementsServic
 
     @Override
     public BodyMeasurements findById(Long id) {
-        return bodyMeasurementsPersistencePort.findById(id);
+        return bodyMeasurementsPersistencePort.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("No se encontraron medidas corporales con el ID " + id);
+        });
     }
 }
