@@ -3,6 +3,7 @@ package com.mycoachfit.api.domain.port;
 import com.mycoachfit.api.domain.model.PaymentHistory;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PaymentHistoryPersistencePort {
     PaymentHistory create(PaymentHistory company);
@@ -11,5 +12,5 @@ public interface PaymentHistoryPersistencePort {
 
     List<PaymentHistory> getAll();
 
-    PaymentHistory findById(Long id);
+    Optional<PaymentHistory> findById(Long id);
 }
