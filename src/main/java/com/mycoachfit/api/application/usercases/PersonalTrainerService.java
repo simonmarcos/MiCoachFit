@@ -8,7 +8,7 @@ import java.util.List;
 public interface PersonalTrainerService {
     PersonalTrainer create(PersonalTrainerRequestDTO personalTrainerRequestDTO);
 
-    PersonalTrainer update(PersonalTrainerRequestDTO personalTrainerRequestDTO);
+    PersonalTrainer update(Long id, PersonalTrainerRequestDTO personalTrainerRequestDTO);
 
     List<PersonalTrainer> getAll();
 

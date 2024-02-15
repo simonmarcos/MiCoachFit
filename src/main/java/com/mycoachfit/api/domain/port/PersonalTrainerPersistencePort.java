@@ -3,6 +3,7 @@ package com.mycoachfit.api.domain.port;
 import com.mycoachfit.api.domain.model.PersonalTrainer;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PersonalTrainerPersistencePort {
     PersonalTrainer create(PersonalTrainer company);
@@ -11,5 +12,5 @@ public interface PersonalTrainerPersistencePort {
 
     List<PersonalTrainer> getAll();
 
-    PersonalTrainer findById(Long id);
+    Optional<PersonalTrainer> findById(Long id);
 }

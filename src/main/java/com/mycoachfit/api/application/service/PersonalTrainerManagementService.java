@@ -8,9 +8,11 @@ import com.mycoachfit.api.domain.port.PersonalTrainerPersistencePort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonalTrainerManagementService implements PersonalTrainerService {
+
     private final PersonalTrainerPersistencePort personalTrainerPersistencePort;
     private final PersonalTrainerDtoMapper personalTrainerDtoMapper;
 
@@ -25,8 +27,13 @@ public class PersonalTrainerManagementService implements PersonalTrainerService 
     }
 
     @Override
-    public PersonalTrainer update(PersonalTrainerRequestDTO personalTrainerRequestDTO) {
-        return personalTrainerPersistencePort.update(personalTrainerDtoMapper.toEntity(personalTrainerRequestDTO));
+    public PersonalTrainer update(Long id, PersonalTrainerRequestDTO personalTrainerRequestDTO) {
+        findById(id);
+
+        PersonalTrainer personalTrainerToSave = personalTrainerDtoMapper.toEntity(personalTrainerRequestDTO);
+        personalTrainerToSave.setId(id);
+
+        return personalTrainerPersistencePort.update(personalTrainerToSave);
     }
 
     @Override
@@ -36,6 +43,8 @@ public class PersonalTrainerManagementService implements PersonalTrainerService 
 
     @Override
     public PersonalTrainer findById(Long id) {
-        return personalTrainerPersistencePort.findById(id);
+        return personalTrainerPersistencePort.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("No se encontró ningún entrenador personal con el ID " + id);
+        });
     }
 }
