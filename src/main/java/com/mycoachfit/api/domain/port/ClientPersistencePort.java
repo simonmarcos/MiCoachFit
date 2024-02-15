@@ -3,6 +3,7 @@ package com.mycoachfit.api.domain.port;
 import com.mycoachfit.api.domain.model.Client;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface ClientPersistencePort {
@@ -12,5 +13,5 @@ public interface ClientPersistencePort {
 
     List<Client> getAll();
 
-    Client findById(Long id);
+    Optional<Client> findById(Long id);
 }

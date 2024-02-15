@@ -13,7 +13,6 @@ import java.util.List;
 public class ClientManagementService implements ClientService {
 
     private final ClientPersistencePort clientPersistencePort;
-
     private final ClientDtoMapper clientDtoMapper;
 
     public ClientManagementService(ClientPersistencePort clientPersistencePort, ClientDtoMapper clientDtoMapper) {
@@ -27,8 +26,13 @@ public class ClientManagementService implements ClientService {
     }
 
     @Override
-    public Client update(ClientRequestDTO clientRequestDTO) {
-        return clientPersistencePort.update(clientDtoMapper.toEntity(clientRequestDTO));
+    public Client update(Long id, ClientRequestDTO clientRequestDTO) {
+        findById(id);
+
+        Client clientToSave = clientDtoMapper.toEntity(clientRequestDTO);
+        clientToSave.setId(id);
+
+        return clientPersistencePort.update(clientToSave);
     }
 
     @Override
@@ -38,6 +42,8 @@ public class ClientManagementService implements ClientService {
 
     @Override
     public Client findById(Long id) {
-        return clientPersistencePort.findById(id);
+        return clientPersistencePort.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("No se encontró ningún cliente con el ID " + id);
+        });
     }
 }
