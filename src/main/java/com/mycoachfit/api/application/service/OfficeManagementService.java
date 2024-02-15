@@ -8,6 +8,7 @@ import com.mycoachfit.api.domain.port.OfficePersistencePort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OfficeManagementService implements OfficeService {
@@ -26,8 +27,13 @@ public class OfficeManagementService implements OfficeService {
     }
 
     @Override
-    public Office update(OfficeRequestDTO officeRequestDTO) {
-        return officePersistencePort.update(officeDtoMapper.toEntity(officeRequestDTO));
+    public Office update(Long id, OfficeRequestDTO officeRequestDTO) {
+        findById(id);
+
+        Office officeToSave = officeDtoMapper.toEntity(officeRequestDTO);
+        officeToSave.setId(id);
+
+        return officePersistencePort.update(officeToSave);
     }
 
     @Override
@@ -37,6 +43,8 @@ public class OfficeManagementService implements OfficeService {
 
     @Override
     public Office findById(Long id) {
-        return officePersistencePort.findById(id);
+        return officePersistencePort.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("No se encontró ninguna oficina con el ID " + id);
+        });
     }
 }

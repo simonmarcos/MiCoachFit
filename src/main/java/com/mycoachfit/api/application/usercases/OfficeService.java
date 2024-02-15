@@ -8,7 +8,7 @@ import java.util.List;
 public interface OfficeService {
     Office create(OfficeRequestDTO officeRequestDTO);
 
-    Office update(OfficeRequestDTO officeRequestDTO);
+    Office update(Long id, OfficeRequestDTO officeRequestDTO);
 
     List<Office> getAll();
 

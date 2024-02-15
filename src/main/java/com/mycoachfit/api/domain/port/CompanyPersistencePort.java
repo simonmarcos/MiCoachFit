@@ -15,4 +15,5 @@ public interface CompanyPersistencePort {
     Optional<Company> findById(Long id);
 
     Optional<Company> findByName(String name);
+
 }

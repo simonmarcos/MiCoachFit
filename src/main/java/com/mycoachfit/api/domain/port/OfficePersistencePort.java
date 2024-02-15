@@ -3,6 +3,7 @@ package com.mycoachfit.api.domain.port;
 import com.mycoachfit.api.domain.model.Office;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OfficePersistencePort {
     Office create(Office company);
@@ -11,5 +12,5 @@ public interface OfficePersistencePort {
 
     List<Office> getAll();
 
-    Office findById(Long id);
+    Optional<Office> findById(Long id);
 }
