@@ -5,10 +5,11 @@ import com.mycoachfit.api.application.usercases.CompanyService;
 import com.mycoachfit.api.domain.model.Company;
 import com.mycoachfit.api.domain.model.dto.request.CompanyRequestDTO;
 import com.mycoachfit.api.domain.port.CompanyPersistencePort;
-import com.mycoachfit.api.infrastructure.rest.advice.model.CustomException;
+import com.mycoachfit.api.infrastructure.rest.advice.CustomException;
+import com.mycoachfit.api.infrastructure.rest.advice.model.BusinessErrorCodeEnum;
+import com.mycoachfit.api.infrastructure.rest.advice.model.BusinessErrorCodeMap;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +29,9 @@ public class CompanyManagementService implements CompanyService {
     public Company create(CompanyRequestDTO companyRequestDTO) {
         Optional<Company> companyInOurDB = companyPersistencePort.findByName(companyRequestDTO.getName());
         if (companyInOurDB.isPresent()) {
-            throw new CustomException(HttpStatus.NOT_FOUND, "Ya se encuentra creada una compañia con el mismo nombre", "");
+            throw new CustomException(HttpStatus.CONFLICT,
+                    BusinessErrorCodeEnum.CLIENTE_EXISTENTE,
+                    BusinessErrorCodeMap.getMessage(BusinessErrorCodeEnum.CLIENTE_EXISTENTE));
         }
 
         return companyPersistencePort.create(companyDtoMapper.toEntity(companyRequestDTO));
