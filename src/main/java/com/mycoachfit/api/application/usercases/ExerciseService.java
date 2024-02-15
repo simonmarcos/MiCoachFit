@@ -10,7 +10,7 @@ import java.util.List;
 public interface ExerciseService {
     Exercise create(ExerciseRequestDTO exerciseRequestDTO);
 
-    Exercise update(ExerciseRequestDTO exerciseRequestDTO);
+    Exercise update(Long id, ExerciseRequestDTO exerciseRequestDTO);
 
     List<Exercise> getAll();
 

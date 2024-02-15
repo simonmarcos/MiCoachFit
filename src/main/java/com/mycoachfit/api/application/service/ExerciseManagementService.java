@@ -8,27 +8,32 @@ import com.mycoachfit.api.domain.port.ExercisePersistencePort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ExerciseManagementService implements ExerciseService {
 
     private final ExercisePersistencePort exercisePersistencePort;
+    private final ExerciseDtoMapper exerciseDtoMapper;
 
-    private final ExerciseDtoMapper exceptionMapper;
-
-    public ExerciseManagementService(ExercisePersistencePort exercisePersistencePort, ExerciseDtoMapper exceptionMapper) {
+    public ExerciseManagementService(ExercisePersistencePort exercisePersistencePort, ExerciseDtoMapper exerciseDtoMapper) {
         this.exercisePersistencePort = exercisePersistencePort;
-        this.exceptionMapper = exceptionMapper;
+        this.exerciseDtoMapper = exerciseDtoMapper;
     }
 
     @Override
     public Exercise create(ExerciseRequestDTO exerciseRequestDTO) {
-        return exercisePersistencePort.create(exceptionMapper.toEntity(exerciseRequestDTO));
+        return exercisePersistencePort.create(exerciseDtoMapper.toEntity(exerciseRequestDTO));
     }
 
     @Override
-    public Exercise update(ExerciseRequestDTO exerciseRequestDTO) {
-        return exercisePersistencePort.update(exceptionMapper.toEntity(exerciseRequestDTO));
+    public Exercise update(Long id, ExerciseRequestDTO exerciseRequestDTO) {
+        findById(id);
+
+        Exercise exerciseToSave = exerciseDtoMapper.toEntity(exerciseRequestDTO);
+        exerciseToSave.setId(id);
+
+        return exercisePersistencePort.update(exerciseToSave);
     }
 
     @Override
@@ -38,6 +43,8 @@ public class ExerciseManagementService implements ExerciseService {
 
     @Override
     public Exercise findById(Long id) {
-        return exercisePersistencePort.findById(id);
+        return exercisePersistencePort.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("No se encontró ningún ejercicio con el ID " + id);
+        });
     }
 }
