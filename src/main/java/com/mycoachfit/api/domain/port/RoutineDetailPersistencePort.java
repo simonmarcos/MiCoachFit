@@ -4,6 +4,7 @@ import com.mycoachfit.api.domain.model.RoutineDetail;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface RoutineDetailPersistencePort {
     RoutineDetail create(RoutineDetail company);
@@ -12,5 +13,5 @@ public interface RoutineDetailPersistencePort {
 
     List<RoutineDetail> getAll();
 
-    RoutineDetail findById(Long id);
+    Optional<RoutineDetail> findById(Long id);
 }

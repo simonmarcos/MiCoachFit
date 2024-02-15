@@ -8,7 +8,7 @@ import java.util.List;
 public interface RoutineDetailService {
     RoutineDetail create(RoutineDetailRequestDTO routineDetailRequestDTO);
 
-    RoutineDetail update(RoutineDetailRequestDTO routineDetailRequestDTO);
+    RoutineDetail update(Long id, RoutineDetailRequestDTO routineDetailRequestDTO);
 
     List<RoutineDetail> getAll();
 

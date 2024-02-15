@@ -26,8 +26,13 @@ public class RoutineDetailManagementService implements RoutineDetailService {
     }
 
     @Override
-    public RoutineDetail update(RoutineDetailRequestDTO routineDetailRequestDTO) {
-        return routineDetailPersistencePort.update(routineDetailDtoMapper.toEntity(routineDetailRequestDTO));
+    public RoutineDetail update(Long id, RoutineDetailRequestDTO routineDetailRequestDTO) {
+        findById(id);
+
+        RoutineDetail routineDetailToSave = routineDetailDtoMapper.toEntity(routineDetailRequestDTO);
+        routineDetailToSave.setId(id);
+
+        return routineDetailPersistencePort.update(routineDetailToSave);
     }
 
     @Override
@@ -37,6 +42,8 @@ public class RoutineDetailManagementService implements RoutineDetailService {
 
     @Override
     public RoutineDetail findById(Long id) {
-        return routineDetailPersistencePort.findById(id);
+        return routineDetailPersistencePort.findById(id).orElseThrow(() -> {
+            throw new RuntimeException("No se encontró ningún detalle de rutina con el ID " + id);
+        });
     }
 }
